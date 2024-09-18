@@ -2,12 +2,26 @@
   "version": 2,
   "builds": [
     {
-      "src": "pages/**/*.js",
-      "use": "@vercel/node"
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/wordFrame",
+      "dest": "/api/wordFrame"
     },
     {
-      "src": "pages/api/**/*.js",
-      "use": "@vercel/og"
+      "src": "/api/og",
+      "dest": "/api/og"
+    },
+    {
+      "src": "/api/answer",
+      "dest": "/api/answer"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
     }
   ]
 }
