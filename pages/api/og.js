@@ -1,13 +1,14 @@
-import { ImageResponse } from '@vercel/og';
-
 export const config = {
   runtime: 'edge',
 };
 
-export default function handler(req) {
+export default async function handler(req) {
   const { searchParams } = new URL(req.url);
   const text = searchParams.get('text');
   const subtext = searchParams.get('subtext');
+
+  // Dynamically import `@vercel/og`
+  const { ImageResponse } = await import('@vercel/og');
 
   return new ImageResponse(
     (
